@@ -1,14 +1,14 @@
 import { Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { Book } from './schemas/book.schemas';
-import mongoose from 'mongoose';
+import { Book } from './Models/book.model';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class BookService {
 
-    constructor(@InjectModel(Book.name) private bookModel: mongoose.Model<Book> ) {}
+    constructor(@InjectRepository(Book) private bookRepository : Repository<Book> ) {}
 
     async findAll() :  Promise<Book[]> {
-        return await this.bookModel.find();
+        return await this.bookRepository.find();
     }
 }
