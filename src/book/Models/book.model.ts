@@ -2,17 +2,17 @@ import { Category } from "src/utilities/enums/Category";
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
-export class Book{
+export class Books{
     @PrimaryGeneratedColumn()
-    bookId:number;
+    BookId:number;
     @Column("text")
-    title: string;
+    Tittle: string;
     @Column("text")
-    description: string;
+    Description: string;
     @Column("text")
-    author: string;
+    Author: string;
     @Column("double")
-    price: number;
+    Price: number;
     @Column("text")
-    category: Category;
+    Category: Category;
 }

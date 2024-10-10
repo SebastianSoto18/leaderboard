@@ -3,10 +3,9 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { BookModule } from './book/book.module';
 import { ConfigModule } from '@nestjs/config';
-import { MongooseModule } from '@nestjs/mongoose';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
-import { Book } from './book/Models/book.model';
+import { Books } from './book/Models/book.model';
 
 @Module({
   imports: [
@@ -16,10 +15,10 @@ import { Book } from './book/Models/book.model';
     })
     ,TypeOrmModule.forRoot({
       type : 'sqlite',
-      database : 'jdbc:sqlite:C:\Users\Juan\Desktop\historieta',
+      database : 'C:\\Users\\Juan\\Desktop\\historieta',
       logger : 'debug',
-      entities: [Book],
-      synchronize: true
+      entities: [Books],
+      synchronize: false,
     })
     ,BookModule],
   controllers: [AppController],
