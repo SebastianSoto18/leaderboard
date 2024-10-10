@@ -1,6 +1,7 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { BookService } from './book.service';
-import { Books } from './Models/book.model';
+import { Books } from './models/book.model';
+import { CreateBookDto } from './dtos/createBookDto';
 
 @Controller('books')
 export class BookController {
@@ -8,8 +9,18 @@ export class BookController {
 
     @Get()
     async getAllBooks(): Promise<Books[]>{
-        var data = await this.bookService.findAll();
-        console.table(data);
-        return data;
+        return  await this.bookService.findAll();
+    }
+
+    @Post()
+    async createBook(@Body() book : CreateBookDto): Promise<Books>{
+
+        var newBook = new Books();
+        newBook.Tittle = book.Tittle;
+        newBook.Author = book.Author;
+        newBook.Category = book.Category;
+        newBook.Description = book.Description;
+        newBook.Price = book.Price;
+        return this.bookService.create(newBook);
     }
 }

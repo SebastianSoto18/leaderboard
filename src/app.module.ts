@@ -5,7 +5,7 @@ import { BookModule } from './book/book.module';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
-import { Books } from './book/Models/book.model';
+import { Books } from './book/models/book.model';
 
 @Module({
   imports: [
@@ -16,7 +16,7 @@ import { Books } from './book/Models/book.model';
     ,TypeOrmModule.forRoot({
       type : 'sqlite',
       database : 'C:\\Users\\Juan\\Desktop\\historieta',
-      logger : 'debug',
+      logger : 'advanced-console',
       entities: [Books],
       synchronize: false,
     })
